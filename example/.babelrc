@@ -1,0 +1,16 @@
+{
+  "presets": [ "@babel/preset-react", "@babel/preset-env" ],
+	"plugins": [
+		"@babel/plugin-syntax-object-rest-spread",
+		"@babel/plugin-proposal-class-properties",
+		"babel-plugin-import-auto-name",
+		"@shnhrrsn/babel-plugin-transform-isnil",
+		[
+			"module-resolver", {
+				"alias": {
+					"App": "./src/App"
+				}
+			}
+		]
+	]
+}
