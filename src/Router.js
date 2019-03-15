@@ -50,7 +50,7 @@ export class Router {
 		return scope.routes || this.routes
 	}
 
-	build(name, params) {
+	build(name, params = void 0) {
 		const route = this.namedRoutes[name]
 
 		if(route.isNil) {
@@ -59,8 +59,10 @@ export class Router {
 
 		let path = route.path
 
-		for(const [ name, value ] of Object.entries(params)) {
-			path = path.replace(new RegExp(`:${name}`), value)
+		if(!params.isNil) {
+			for(const [ name, value ] of Object.entries(params)) {
+				path = path.replace(new RegExp(`:${name}`), value)
+			}
 		}
 
 		return path.toLowerCase()
@@ -72,8 +74,10 @@ export class Router {
 		return this.navigate()
 	}
 
-	handle = (url, event) => {
-		event.preventDefault()
+	handle = (url, event = null) => {
+		if(!event.isNil) {
+			event.preventDefault()
+		}
 
 		return this.update(url)
 	}

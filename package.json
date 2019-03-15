@@ -28,9 +28,9 @@
 		"rollup-plugin-terser": "^4.0.4"
 	},
 	"scripts": {
+		"prepack": "npm build",
 		"build": "NODE_ENV=production rollup -c",
 		"dev": "NODE_ENV=production rollup -c -w",
-		"postinstall": "npm build",
 		"test": "ava --verbose"
 	},
 	"ava": {
