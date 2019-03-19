@@ -6,6 +6,8 @@ export class MiddlewareHandler extends React.PureComponent {
 		render: null
 	}
 
+	timeout = null
+
 	handleError(err) {
 		const { errorHandler, props } = this.props
 
@@ -16,15 +18,12 @@ export class MiddlewareHandler extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		const { route, props, context, render } = this.props
+		const { route, props, context } = this.props
 
-		let timeout = setTimeout(() => this.setState({ _initiated: true, loading: true }), context.timeout || 250)
+		this.timeout = setTimeout(() => this.setState({ _initiated: true, loading: true }), context.timeout || 250)
 
 		route.middleware.apply([ route, props ], response => {
-			if(timeout) {
-				clearTimeout(timeout)
-				timeout = null
-			}
+			this.clearLoadingTimeout()
 
 			if(response instanceof Error) {
 				response = this.handleError(response)
@@ -33,9 +32,22 @@ export class MiddlewareHandler extends React.PureComponent {
 			this.setState({
 				_initiated: true,
 				loading: false,
-				render: response || render
+				render: response || void 0
 			})
 		})
+	}
+
+	componentWillUnmount() {
+		this.clearLoadingTimeout()
+	}
+
+	clearLoadingTimeout() {
+		if(!this.timeout) {
+			return
+		}
+
+		clearTimeout(this.timeout)
+		this.timeout = null
 	}
 
 	render() {
@@ -47,7 +59,7 @@ export class MiddlewareHandler extends React.PureComponent {
 			return 'Loading...'
 		}
 
-		return this.state.render
+		return this.state.render || this.props.render
 	}
 
 }
