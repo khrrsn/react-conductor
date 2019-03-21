@@ -20,10 +20,10 @@ export class Switch extends React.Component {
 					const match = context.router.match(location, routes)
 					const props = {
 						location,
+						...additionalProps,
 						route: (match || { }).route,
 						routes: ((match || { }).route || { }).routes,
 						params: ((match || { }).params || { }),
-						...additionalProps,
 					}
 
 					return this.process(match || { }, { errorHandler, loading, ...props }, context)
