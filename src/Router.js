@@ -97,8 +97,8 @@ export class Router {
 		let prefix = this._joinPath(this._scopedPrefix, this._normalizePathComponent(options.prefix || '/'))
 
 		const scope = {
-			prefix,
 			...options,
+			prefix,
 			middleware: this._compileMiddleware()
 		}
 
