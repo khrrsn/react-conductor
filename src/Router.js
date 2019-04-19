@@ -110,7 +110,7 @@ export class Router {
 	}
 
 	layout(path, callback) {
-		const route = this.add(`${path}*`)
+		const route = this.add(`${path}/*`)
 		const routes = [ ]
 
 		this.group({ prefix: path, routes }, callback)
