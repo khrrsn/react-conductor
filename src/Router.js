@@ -82,6 +82,10 @@ export class Router {
 		return this.update(url)
 	}
 
+	handleRoute(route, ...args) {
+		return this.update(this.build(route, ...args))
+	}
+
 	update(path) {
 		window.history.pushState({ }, '', path)
 
