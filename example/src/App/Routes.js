@@ -15,8 +15,10 @@ export function Routes(routes) {
 	routes.add('/').component(Container).as('home.show')
 
 	routes.layout('users', routes => {
-		routes.add('/', Users).as('users.index')
-		routes.add(':user', User).as('users.show')
+		routes.group({ prefix: 'test' }, routes => {
+			routes.add('/', Users).as('users.index')
+			routes.add(':user', User).as('users.show')
+		})
 	}).component(UsersLayout)
 
 	routes.layout('pets', routes => {
