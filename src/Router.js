@@ -125,7 +125,12 @@ export class Router {
 		const route = this.add(`${path}/*`)
 		const routes = [ ]
 
-		this.group({ prefix: path, routes }, callback)
+		this.group({
+			prefix:
+			path,
+			routes,
+			type: 'layout'
+		}, callback)
 
 		route.routes = routes
 		route.type = 'layout'
@@ -265,7 +270,11 @@ export class Router {
 		const middleware = new Middleware
 		const scope = this._activeScope
 
-		if(scope.middleware) {
+		if(scope.type === 'layout') {
+			return middleware
+		}
+
+		if(scope.middleware && scope.middleware.exists) {
 			middleware.use(...scope.middleware.callbacks)
 		}
 
