@@ -160,7 +160,7 @@ export class Router {
 
 	use(...args) {
 		for(const middleware of args) {
-			this._scopedAction.middleware.use(this.resolveMiddleware(middleware))
+			this._activeScope.middleware.use(this.resolveMiddleware(middleware))
 		}
 
 		return this
