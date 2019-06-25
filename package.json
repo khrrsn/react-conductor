@@ -1,6 +1,6 @@
 {
 	"name": "@khrrsn/react-conductor",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"main": "src/index.js",
 	"module": "lib/react-conductor.js",
 	"repository": "git@github.com:khrrsn/react-conductor.git",
