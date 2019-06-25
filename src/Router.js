@@ -45,9 +45,17 @@ export class Router {
 	}
 
 	get _scopedRoutes() {
-		const scope = this._activeScope
+		for(let i = this._scope.length - 1; i >= 0; i--) {
+			const scope = this._scope[i]
 
-		return scope.routes || this.routes
+			if(!scope.routes) {
+				continue
+			}
+
+			return scope.routes
+		}
+
+		return this.routes
 	}
 
 	build(name, params = void 0) {
