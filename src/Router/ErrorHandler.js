@@ -1,3 +1,5 @@
+import React from 'react'
+
 export class ErrorHandler extends React.Component {
 
 	componentDidMount() {

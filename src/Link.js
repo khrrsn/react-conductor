@@ -1,3 +1,4 @@
+import React from 'react'
 import { RouterContext } from './RouterContext'
 
 export class Link extends React.Component {

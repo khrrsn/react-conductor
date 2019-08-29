@@ -2,7 +2,7 @@
 	"name": "@khrrsn/react-conductor",
 	"version": "1.0.8",
 	"main": "src/index.js",
-	"module": "lib/react-conductor.js",
+	"module": "dist/react-conductor.cjs.production.js",
 	"repository": "git@github.com:khrrsn/react-conductor.git",
 	"author": "Keith Harrison <@khrrsn>",
 	"license": "MIT",

@@ -1,3 +1,5 @@
+import React from 'react'
+
 export class MiddlewareHandler extends React.PureComponent {
 
 	state = {

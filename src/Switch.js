@@ -1,3 +1,4 @@
+import React from 'react'
 import { RouterContext } from './RouterContext'
 import { MiddlewareHandler } from './Switch/MiddlewareHandler'
 
