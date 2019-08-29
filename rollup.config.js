@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
+import gzip from 'rollup-plugin-gzip'
 
 const input = './src/index.js'
 const filename = 'react-conductor'
@@ -47,6 +48,7 @@ const buildUmd = ({ env }) => ({
 			ecma: 5,
 			toplevel: false,
 		}),
+		env === 'production' && gzip()
 	]
 })
 
@@ -76,6 +78,7 @@ const buildCjs = ({ env }) => ({
 			// @see https://github.com/terser-js/terser
 			toplevel: true,
 		}),
+		env === 'production' && gzip()
 	],
 });
 
